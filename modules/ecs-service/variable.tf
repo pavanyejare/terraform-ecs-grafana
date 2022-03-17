@@ -1,0 +1,10 @@
+variable "cluster_name" {}
+variable "ecs_cluster_id" {}
+variable "task_defination" {}
+variable "subnet" {}
+variable "service_security_group" {}
+variable "target_group_arn" {}
+variable "container_name" {}
+variable "container_port" {}
+variable "desired_count" {}
+variable "tag" {}
