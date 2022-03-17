@@ -1,5 +1,5 @@
 locals {
-  vpc = "vpc-dc1988b7"
+  vpc = "vpc-dc1988b7" ### change it VPC ID
   tags = {
     "env"            = "dev"
     "purpose"        = "wfapi"
@@ -11,24 +11,6 @@ locals {
     "owner"          = "development"
     "app-tier"       = "middleware"
   }
-  grafana_efs = [
-    { name = "grafana"
-      path = "/grafana"
-    },
-    {
-      name = "grafana_config"
-      path = "/grafana_config"
-    },
-    {
-      name = "gtest"
-      path = "/gtest"
-    },
-    {
-      name = "grafana_datasource"
-      path = "/grafana_datasource"
-    }
-
-  ]
 
   container_defination = [
     {
