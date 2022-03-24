@@ -1,6 +1,6 @@
 module "grafana_dashboard_efs" {
   source     = "./modules/efs"
-  efs_name   = "grafana"
+  efs_name   = var.grafana_efs
   sg_group   = module.wfapi_service_sg.sg_id
   efs_subnet = data.aws_subnet_ids.subnet.ids
   access_point = [

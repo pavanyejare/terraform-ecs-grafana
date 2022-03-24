@@ -1,8 +1,7 @@
-
 module "wfapi_service_sg" {
   source      = "./modules/security_group"
-  sg_name     = "wafednet-lvdev-w2-dev-wfapiservice"
-  description = "Allow default inbound http and outbound traffic"
+  sg_name     = var.ecs_sg_name
+  description = var.ecs_sg_description
   vpc_id      = local.vpc
   ingress = [
     {
@@ -22,8 +21,8 @@ module "wfapi_service_sg" {
 
 module "alb_sg" {
   source      = "./modules/security_group"
-  sg_name     = "wafednet-lvdev-w2-dev-wfapialb"
-  description = "Allows all traffic to nginx"
+  sg_name     = var.alb_sg_name
+  description = var.alb_sg_description
   vpc_id      = local.vpc
   ingress = [
     {

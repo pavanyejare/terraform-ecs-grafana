@@ -28,13 +28,13 @@ resource "aws_efs_access_point" "access_point" {
   count          = length(var.access_point)
   file_system_id = aws_efs_file_system.efs.id
   posix_user {
-    gid = 1000
-    uid = 1000
+    gid = 10000
+    uid = 10000
   }
   root_directory {
     path = element(var.access_point.*.path, count.index)
     creation_info {
-      permissions = 777
+      permissions = 755
       owner_gid   = 1000
       owner_uid   = 1000
     }

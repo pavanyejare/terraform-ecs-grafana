@@ -1,32 +1,32 @@
 module "prom-tg" {
   source            = "./modules/alb-tg"
   tag               = local.tags
-  port              = "9090"
-  protocol          = "HTTP"
-  target_group_name = "prometheus-tg"
-  target_port       = "9090"
-  target_protocol   = "HTTP"
+  port              = var.prom_tg_port
+  protocol          = var.prom_tg_protocol
+  target_group_name = var.prom_tg_name
+  target_port       = var.prom_tg_target_port
+  target_protocol   = var.prom_tg_target_protocol
   vpc_id            = local.vpc
   alb_arn           = module.alb.alb_id
 }
 
 module "prom-service" {
   source                 = "./modules/ecs-service"
-  cluster_name           = "prometheus"
+  cluster_name           = var.prom_svc_name
   ecs_cluster_id         = module.ecs.cluster_id
   task_defination        = module.prom-task-def.task_arn
   subnet                 = data.aws_subnet_ids.subnet.ids
   service_security_group = module.wfapi_service_sg.sg_id
   target_group_arn       = module.prom-tg.alb_tg_id
-  container_name         = "prometheus"
-  container_port         = "9090"
-  desired_count          = "1"
+  container_name         = var.prom_container_name
+  container_port         = var.prom_container_port
+  desired_count          = var.prom_container_protocol
   tag                    = local.tags
 }
 
 module "prom-task-def" {
   source             = "./modules/task-def"
-  family             = "prometheus"
+  family             = var.prom_svc_name
   execution_role_arn = data.aws_iam_role.ecs_role.arn
   network_mode       = "awsvpc"
   cpu                = "256"
@@ -51,7 +51,7 @@ module "prom-task-def" {
 
 module "prom_dashboard_efs" {
   source     = "./modules/efs"
-  efs_name   = "prometheus"
+  efs_name   = var.prom_efs_name
   sg_group   = module.wfapi_service_sg.sg_id
   efs_subnet = data.aws_subnet_ids.subnet.ids
   access_point = [
