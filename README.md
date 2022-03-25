@@ -18,11 +18,12 @@ Deploying Grafana and prometheus container service, on AWS ECS with high availab
 
 ## Grafana Container Info
 1. Garafana use following mount point
-  1.1. grafana_config  -> /var/lib/grafana/
-  1.2. grafana_dashboard -> /etc/grafana/provisionin/dashboards
-  1.3. grafana_datasource -> /etc/grafana/provisionin/datasource
+   - 1.1. grafana_config  -> /var/lib/grafana/
+   - 1.2. grafana_dashboard -> /etc/grafana/provisionin/dashboards
+   - 1.3. grafana_datasource -> /etc/grafana/provisionin/datasource
 2. Port - 3000 
-3. environment = 
+3. environment 
+      ```
       3.1 name  = "GF_SECURITY_ADMIN_USER"
           value = "admin"
       3.2 name  = "GF_SECURITY_ADMIN_PASSWORD"
@@ -31,20 +32,21 @@ Deploying Grafana and prometheus container service, on AWS ECS with high availab
           value = "false"
       3.4 name  = "GF_SMTP_HOST"
           value = "mail
-
+      ```
 ## Prometheus Container Info
 1. Prometheus uses following mount point
-     1.1 prometheus -> /etc/prometheus
-	 1.2 prometheus_data  -> /prometheus
+    - 1.1 prometheus -> /etc/prometheus
+	- 1.2 prometheus_data  -> /prometheus
 2. Port - 9090
 3. Command Patameters - 
+      ```
         --config.file=/etc/prometheus/proetheus.yml
         --storage.tsdb.path=/promtheus
         --web.console.libraries=/etc/prometheus/console_librairies
         --web.console.templates=/etc/prometheus/consoles
         --web.enable-lifecycle
         --web.external-url=http:/
-
+       ```
 
 ##Pre-requisites
 Before we get started installing the Prometheus and Grafana stack on AWS.
@@ -65,7 +67,7 @@ Before we get started installing the Prometheus and Grafana stack on AWS.
 		  vpc_id = "YOUR_VPC_ID" ## change it 
 		  tags = {
 		    access-team = "YOUR_VPC_TAG"
-		  }
+	    }
   ``` 
 - Make changes in value.auto.tfvars as per your requirments 
 
