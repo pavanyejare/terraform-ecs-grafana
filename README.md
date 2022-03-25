@@ -39,23 +39,23 @@ Deploying Grafana and prometheus container service, on AWS ECS with high availab
 	- 1.2 prometheus_data  -> /prometheus
 2. Port - 9090
 3. Command Patameters - 
-      ```
+   ```
         --config.file=/etc/prometheus/proetheus.yml
         --storage.tsdb.path=/promtheus
         --web.console.libraries=/etc/prometheus/console_librairies
         --web.console.templates=/etc/prometheus/consoles
         --web.enable-lifecycle
         --web.external-url=http:/
-       ```
+   ```
 
-##Pre-requisites
+## Pre-requisites
 Before we get started installing the Prometheus and Grafana stack on AWS.
 
 - Ensure install the latest version of terraform is installed
 - Create the IAM access role for ecsTaskExecutionRole
 - Create the VPC and at least two subnets 
 
-##Installation and configuration
+## Installation and configuration
 - Clone the direcotry
 - prepare the .tf files
 - In data.tf file pass the iam role name and vpc ID with tag name 
