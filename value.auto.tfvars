@@ -27,3 +27,14 @@ prom_container_protocol = "1"
 prom_efs_name           = "prometheus"
 
 
+alert_tg_port            = "9093"
+alert_tg_protocol        = "HTTP"
+alert_tg_name            = "alertmanager-tg"
+alert_tg_target_port     = "9093"
+alert_tg_target_protocol = "HTTP"
+alert_svc_name           = "alertmanager"
+alert_container_name     = "alertmanager"
+alert_container_port     = "9093"
+alert_container_protocol = "HTTP"
+alert_efs_name           = "alertmanager"
+
