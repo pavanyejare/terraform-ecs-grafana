@@ -26,3 +26,15 @@ variable "prom_container_name" {}
 variable "prom_container_port" {}
 variable "prom_container_protocol" {}
 variable "prom_efs_name" {}
+
+variable "alert_tg_port" {}
+variable "alert_tg_protocol" {}
+variable "alert_tg_name" {}
+variable "alert_tg_target_port" {}
+variable "alert_tg_target_protocol" {}
+variable "alert_svc_name" {}
+variable "alert_container_name" {}
+variable "alert_container_port" {}
+variable "alert_container_protocol" {}
+variable "alert_efs_name" {}
+
