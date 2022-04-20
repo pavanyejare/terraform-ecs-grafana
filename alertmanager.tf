@@ -20,7 +20,7 @@ module "alert-service" {
   target_group_arn       = module.alert-tg.alb_tg_id
   container_name         = var.alert_container_name
   container_port         = var.alert_container_port
-  desired_count          = var.alert_container_protocol
+  desired_count          = var.alert_container_count
   tag                    = local.tags
 }
 
@@ -38,7 +38,7 @@ module "alert-task-def" {
       volume_name  = "alertmanager"
       volume_id    = module.alert_dashboard_efs.efs-id
       path         = "/alertmanager"
-      access_point = [for u in module.alert_dashboard_efs.access_point : u.id if u.tags["Name"] == "prometheus"][0]
+      access_point = [for u in module.alert_dashboard_efs.access_point : u.id if u.tags["Name"] == "alertmanager"][0]
     }
   ]
 }

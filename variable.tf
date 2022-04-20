@@ -35,6 +35,6 @@ variable "alert_tg_target_protocol" {}
 variable "alert_svc_name" {}
 variable "alert_container_name" {}
 variable "alert_container_port" {}
-variable "alert_container_protocol" {}
+variable "alert_container_count" {}
 variable "alert_efs_name" {}
 

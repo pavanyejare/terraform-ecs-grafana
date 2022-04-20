@@ -35,6 +35,6 @@ alert_tg_target_protocol = "HTTP"
 alert_svc_name           = "alertmanager"
 alert_container_name     = "alertmanager"
 alert_container_port     = "9093"
-alert_container_protocol = "HTTP"
+alert_container_count    = "1"
 alert_efs_name           = "alertmanager"
 
